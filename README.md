@@ -77,3 +77,113 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Jawaban Pertanyaan A
+
+## 1. Pemotongan Paragraf Caption:
+
+### Pertanyaan:
+- Apakah pemotongan paragraf caption menjadi 3 baris dilakukan secara bebas yang penting tampilannya menjadi tiga baris?
+- Atau menggunakan cara menghitung jumlah kata dan maksimal kata berapa captionnya di potong?
+- Jika barisnya kurang dari tiga, apakah tombol "View More" harus dihilangkan?
+
+## 2. Ketinggian Gambar Postingan:
+
+### Pertanyaan:
+- Ketinggian dari gambar postingan yang harus sesuai dengan tinggi teks itu secara spesifik seperti apa?
+- Apakah height nya harus dibagi 2 ketika belum di-klik expand dengan tombol "View More"?
+
+
+## 3. Down Vote pada Postingan:
+
+### Pertanyaan:
+- Bagaimana jika ada user yang melakukan down vote pada postingan ketika nilai vote nya sama dengan 0?
+- Apakah nilai votes nya tetap dihitung jadi negatif atau button downvote di-disable atau harus menambahkan logika untuk tidak membuat votes lebih kecil dari 0?
+
+
+# Jawaban Pertanyaan C-1
+
+## 1. Struktur Data:
+
+### Jawaban:
+Untuk menerapkan fitur "Orang yang Mungkin Anda Kenal," menggunakan struktur data berupa graf (graph) dengan simpul (node) yang mewakili pengguna dan komunitas, serta tepi (edge) yang mewakili koneksi antara mereka. Setiap simpul memiliki atribut tambahan seperti waktu terakhir terhubung atau frekuensi interaksi.
+
+### Contoh Struktur Data (dalam format JSON):
+```json
+{
+  "users": [
+    {"id": 1, "name": "UserA", "connections": [2, 3, 4], "communities": [101]},
+    {"id": 2, "name": "UserB", "connections": [1, 3], "communities": [101, 102]},
+    {"id": 3, "name": "UserC", "connections": [1, 2], "communities": [102, 103]}
+  ],
+  "communities": [
+    {"id": 101, "name": "CommunityX", "members": [1, 2]},
+    {"id": 102, "name": "CommunityY", "members": [2, 3]},
+    {"id": 103, "name": "CommunityZ", "members": [3]}
+  ]
+}
+```
+
+## 2. Penanganan Kasus Ekstrim:
+
+### Pertanyaan:
+- Bagaimana menangani kasus ekstrim, seperti tidak ada pengguna/komunitas yang terkait/terkoneksi atau terlalu banyak pengguna/komunitas yang terkait/terkoneksi?
+
+### Jawaban:
+- Jika tidak ada pengguna/komunitas terkait, tampilkan pesan relevan dan jangan tampilkan rekomendasi pada saat tersebut.
+- Jika terlalu banyak pengguna/komunitas terkait, terapkan algoritma filtrasi cerdas dan batasi jumlah rekomendasi yang ditampilkan.
+
+## 3. Pengujian Fitur:
+
+### Jawaban:
+- Uji fungsional untuk memastikan rekomendasi sesuai dengan koneksi dan komunitas pengguna.
+- Uji kinerja untuk menilai kemampuan menangani skala besar.
+- Uji kesalahan dengan simulasi kondisi ekstrim.
+- Uji integrasi untuk memastikan fitur berintegrasi dengan bagian lain dari aplikasi.
+
+# Jawaban Pertanyaan C-2
+
+## 1. Pengumpulan Informasi:
+
+### Jawaban:
+- Dapatkan informasi tentang pengguna, seperti daftar koneksi dan komunitas yang diikuti.
+
+## 2. Identifikasi Koneksi dan Komunitas Terkait:
+
+### Jawaban:
+- Hitung tingkat koneksi antara pengguna dan setiap koneksi langsung (teman) serta tingkat afiliasi dengan setiap komunitas. Ini dapat melibatkan perhitungan berdasarkan frekuensi interaksi, waktu terakhir terhubung, atau faktor lain yang relevan.
+
+## 3. Pemberian Bobot:
+
+### Jawaban:
+- Berikan bobot pada koneksi dan komunitas berdasarkan tingkat kedekatan atau relevansi.
+
+## 4. Penyaringan Rekomendasi:
+
+### Jawaban:
+- Lindungi pengguna dari rekomendasi yang mungkin kurang relevan atau memiliki tingkat kedekatan yang rendah. Terapkan batasan pada jumlah rekomendasi yang ditampilkan untuk menjaga kejelasan.
+
+## 5. Pemberian Bobot Tambahan:
+
+### Jawaban:
+- Pertimbangkan faktor-faktor tambahan seperti popularitas umum pengguna atau komunitas, atau kebaruan koneksi pengguna.
+
+## 6. Pengurangan Rekomendasi Ganda:
+
+### Jawaban:
+- Hapus kemungkinan rekomendasi ganda agar hasilnya beragam dan tidak mengulangi konten yang sama.
+
+## 7. Penanganan Kasus Ekstrim:
+
+### Jawaban:
+- Atur strategi khusus untuk kasus ekstrim, seperti pengguna dengan sedikit atau tanpa koneksi. Misalnya, tampilkan rekomendasi berdasarkan komunitas yang mungkin menarik bagi pengguna.
+
+## 8. Penyesuaian Dinamis:
+
+### Jawaban:
+- Lakukan penyesuaian dinamis berdasarkan interaksi pengguna. Jika pengguna sering berinteraksi dengan rekomendasi tertentu, bobotnya dapat ditingkatkan.
+
+## 9. Pengoptimalan Kinerja:
+
+### Jawaban:
+- Pastikan algoritma dapat beroperasi dengan cepat dan efisien pada skala besar. Gunakan teknik optimasi, seperti
